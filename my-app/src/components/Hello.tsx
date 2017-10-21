@@ -20,33 +20,33 @@ type HelloOwnProps = {
 type HelloProps = HelloStateProps & HelloDispatchProps & HelloOwnProps;
 
 type HelloState = {
-  isInverted: boolean;
+  useHi: boolean;
 };
 
 class Hello extends React.Component<HelloProps, HelloState> {
+  state: HelloState = { useHi: false };
+
+  onChangeGreetingButtonClick: React.MouseEventHandler<HTMLButtonElement> = event =>
+    this.setState(state => ({ useHi: !state.useHi }))
+
   render() {
-    if (this.props.enthusiasmLevel <= 0) {
-      throw new Error('You could be a little more enthusiastic. :D');
-    }
-  
+    const { useHi } = this.state;
+    const { name, enthusiasmLevel } = this.props;
     return (
       <div className="hello">
-        <div className="greeting">
-          Hello {this.props.name + Array.from({ length: this.props.enthusiasmLevel + 1 }).join('!')}
-        </div>
+        {useHi ? 'Hi' : 'Hello'} {name} x{enthusiasmLevel}
         <div>
           <button onClick={this.props.decrementEnthusiasm}>-</button>
           <button onClick={this.props.incrementEnthusiasm}>+</button>
+          <button onClick={this.onChangeGreetingButtonClick}>Change greeting</button>
         </div>
       </div>
     );
   }
 }
 
-export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState): HelloStateProps {
-  return {
-    enthusiasmLevel
-  };
+export function mapStateToProps({ enthusiasmLevel }: StoreState): HelloStateProps {
+  return { enthusiasmLevel };
 }
 
 export function mapDispatchToProps(dispatch: Dispatch<EnthusiasmAction>): HelloDispatchProps {

@@ -23,8 +23,7 @@ type HelloState = {
   useHi: boolean;
 };
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class Hello extends React.Component<HelloProps, HelloState> {
+class Hello extends React.Component<HelloProps, HelloState> {
   state: HelloState = { useHi: false };
 
   onChangeGreetingButtonClick: React.MouseEventHandler<HTMLButtonElement> = event =>
@@ -53,3 +52,5 @@ export function mapStateToProps({ enthusiasmLevel }: StoreState): HelloStateProp
 export function mapDispatchToProps(dispatch: Dispatch<EnthusiasmAction>): HelloDispatchProps {
   return Redux.bindActionCreators({ incrementEnthusiasm, decrementEnthusiasm }, dispatch);
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hello);

@@ -6,7 +6,7 @@ import './index.css';
 import { createStore } from 'redux';
 import { enthusiasm } from './reducers/index';
 import { StoreState } from './types/index';
-import Hello from './containers/Hello';
+import Hello from './components/Hello';
 import { Provider } from 'react-redux';
 
 const store = createStore<StoreState>(enthusiasm, {
@@ -16,7 +16,7 @@ const store = createStore<StoreState>(enthusiasm, {
 
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <Hello name="Tom" />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );

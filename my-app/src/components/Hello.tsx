@@ -1,34 +1,56 @@
 import * as React from 'react';
+import * as Redux from 'redux';
+import { incrementEnthusiasm, decrementEnthusiasm, EnthusiasmAction } from '../actions/';
+import { StoreState } from '../types/index';
+import { connect, Dispatch } from 'react-redux';
 
-export interface Props {
+type HelloStateProps = {
+  enthusiasmLevel: number;
+};
+
+type HelloDispatchProps = {
+  incrementEnthusiasm: () => void;
+  decrementEnthusiasm: () => void;
+};
+
+type HelloOwnProps = {
   name: string;
-  enthusiasmLevel?: number;
-  onIncrement?: () => void;
-  onDecrement?: () => void;
-}
+};
 
-function Hello({ name, enthusiasmLevel = 1, onIncrement, onDecrement }: Props) {
-  if (enthusiasmLevel <= 0) {
-    throw new Error('You could be a little more enthusiastic. :D');
+type HelloProps = HelloStateProps & HelloDispatchProps & HelloOwnProps;
+
+type HelloState = {
+  isInverted: boolean;
+};
+
+class Hello extends React.Component<HelloProps, HelloState> {
+  render() {
+    if (this.props.enthusiasmLevel <= 0) {
+      throw new Error('You could be a little more enthusiastic. :D');
+    }
+  
+    return (
+      <div className="hello">
+        <div className="greeting">
+          Hello {this.props.name + Array.from({ length: this.props.enthusiasmLevel + 1 }).join('!')}
+        </div>
+        <div>
+          <button onClick={this.props.decrementEnthusiasm}>-</button>
+          <button onClick={this.props.incrementEnthusiasm}>+</button>
+        </div>
+      </div>
+    );
   }
-
-  return (
-    <div className="hello">
-      <div className="greeting">
-        Hello {name + getExclamationMarks(enthusiasmLevel)}
-      </div>
-      <div>
-        <button onClick={onDecrement}>-</button>
-        <button onClick={onIncrement}>+</button>
-      </div>
-    </div>
-  );
 }
 
-export default Hello;
-
-// helpers
-
-function getExclamationMarks(numChars: number) {
-  return Array(numChars + 1).join('!');
+export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState): HelloStateProps {
+  return {
+    enthusiasmLevel
+  };
 }
+
+export function mapDispatchToProps(dispatch: Dispatch<EnthusiasmAction>): HelloDispatchProps {
+  return Redux.bindActionCreators({ incrementEnthusiasm, decrementEnthusiasm }, dispatch);
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hello);

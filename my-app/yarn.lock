@@ -17,9 +17,9 @@
     "@types/node" "*"
     "@types/react" "*"
 
-"@types/react-redux@^5.0.10":
-  version "5.0.10"
-  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.10.tgz#f5c45a349f759d87d6b1f2aa096a756561a6d5c9"
+"@types/react-redux@^5.0.13":
+  version "5.0.13"
+  resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.13.tgz#dcc67764b7455ed54422a0302fedf47e32db3579"
   dependencies:
     "@types/react" "*"
     redux "^3.6.0"

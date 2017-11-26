@@ -2,7 +2,8 @@ import * as React from 'react';
 import * as Redux from 'redux';
 import { incrementEnthusiasm, decrementEnthusiasm, EnthusiasmAction } from '../actions/';
 import { StoreState } from '../types/index';
-import { connect, Dispatch } from 'react-redux';
+import { Dispatch } from 'react-redux';
+import { connect } from '../connect';
 
 type HelloStateProps = {
   enthusiasmLevel: number;
@@ -23,7 +24,8 @@ type HelloState = {
   useHi: boolean;
 };
 
-class Hello extends React.Component<HelloProps, HelloState> {
+@connect(mapStateToProps, mapDispatchToProps)
+export default class Hello extends React.Component<HelloProps, HelloState> {
   state: HelloState = { useHi: false };
 
   onChangeGreetingButtonClick: React.MouseEventHandler<HTMLButtonElement> = event =>
@@ -52,5 +54,3 @@ export function mapStateToProps({ enthusiasmLevel }: StoreState): HelloStateProp
 export function mapDispatchToProps(dispatch: Dispatch<EnthusiasmAction>): HelloDispatchProps {
   return Redux.bindActionCreators({ incrementEnthusiasm, decrementEnthusiasm }, dispatch);
 }
-
-export default connect(mapStateToProps, mapDispatchToProps)(Hello);

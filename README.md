@@ -10,3 +10,7 @@
 - Install Redux: `npm install -S redux react-redux @types/react-redux`
 - Follow the tutorial to implement Redux state management
 - [Ask the question](https://stackoverflow.com/questions/46861839/typescript-connect-decorator-with-stateful-component)
+
+## To do
+
+- [ ] Try John Hadley suggestion [here](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/9951)

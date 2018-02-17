@@ -8,7 +8,7 @@
 
 [See the Stack Overflow question](https://stackoverflow.com/questions/46861839/typescript-connect-decorator-with-stateful-component)
 
-…aaand [see the TypeScript GitHub open issue]([here](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/9951))
+…aaand [see the TypeScript GitHub open issue](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/9951)
 
 ## How to create this demo repo
 

@@ -1,6 +1,16 @@
 # React+Redux+TypeScript+`connect` decorator demo
 
+## Running
+
 `cd my-app && yarn start`
+
+## The problem statement
+
+[See the Stack Overflow question](https://stackoverflow.com/questions/46861839/typescript-connect-decorator-with-stateful-component)
+
+…aaand [see the TypeScript GitHub open issue]([here](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/9951))
+
+## How to create this demo repo
 
 [TypeScript React Starter](https://github.com/Microsoft/TypeScript-React-Starter)
 
@@ -9,8 +19,3 @@
 - Test the app `yarn start`
 - Install Redux: `npm install -S redux react-redux @types/react-redux`
 - Follow the tutorial to implement Redux state management
-- [Ask the question](https://stackoverflow.com/questions/46861839/typescript-connect-decorator-with-stateful-component)
-
-## To do
-
-- [ ] Try John Hadley suggestion [here](https://github.com/DefinitelyTyped/DefinitelyTyped/issues/9951)
